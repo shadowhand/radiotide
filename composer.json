@@ -1,0 +1,25 @@
+{
+    "name": "shadowhand/radiotide",
+    "description": "Copy your Rdio data to Tidal",
+    "license": "MIT",
+    "autoload": {
+        "files": [
+            "src/_functions.php"
+        ],
+        "psr-4": {
+            "Shadowhand\\RadioTide\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Shadowhand\\RadioTide\\": "test"
+        }
+    },
+    "require": {
+        "adam-paterson/oauth2-rdio": "^1.0",
+        "josegonzalez/dotenv": "^1.0",
+        "guzzlehttp/guzzle": "^6.1",
+        "sparkphp/spark": "^0.8",
+        "league/plates": "^3.1"
+    }
+}
