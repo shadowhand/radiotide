@@ -38,9 +38,7 @@ class TidalClient
             'form_params' => compact('username', 'password'),
         ];
 
-        $response = $this->post('login/username', $options);
-
-        return $this->body($response);
+        return $this->body($this->post('login/username', $options));
     }
 
     /**
@@ -114,6 +112,28 @@ class TidalClient
 
         $body = (string) $response->getBody();
 
-        return json_decode($body);
+        return json_decode($body, true);
+    }
+
+    /**
+     * @return boolean
+     */
+    public function isProbablyDuplicate(Response $response)
+    {
+        if ($response->getStatusCode() !== 500) {
+            return false;
+        }
+
+        $body = $this->body($response);
+
+        if (empty($body['status']) || $body['status'] !== 500) {
+            return false;
+        }
+
+        if (empty($body['userMessage'])) {
+            return false;
+        }
+
+        return false !== strpos($body['userMessage'], 'an unexpected error occurred');
     }
 }
