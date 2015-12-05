@@ -149,18 +149,13 @@ class Import implements Domain
             try {
                 $this->addTidalFav($id);
             } catch (ServerException $e) {
-                if ($e->hasResponse()) {
-                    if ($this->tidal->isProbablyDuplicate($e->getResponse())) {
-                        continue;
-                    }
+                if (!$e->hasResponse() || !$this->tidal->isProbablyDuplicate($e->getResponse())) {
+                    $missing[] = $query;
+                    continue;
                 }
-                $missing[] = $query;
-                continue;
             }
 
             $count++;
-
-            usleep(200);
         }
 
         return [$count, $missing];
@@ -184,7 +179,10 @@ class Import implements Domain
         ];
 
         if (!empty($input['types'])) {
-            $wants = preg_split('/,\s*/', $input['types']);
+            $wants = $input['types'];
+            if (!is_array($wants)) {
+                $wants = preg_split('/,\s*/', $wants);
+            }
             $types = array_intersect_key($types, array_flip($wants));
         }
 
@@ -206,7 +204,7 @@ class Import implements Domain
         return $this->payload
             ->withStatus(Payload::OK)
             ->withOutput($output + [
-                'template' => 'import',
+                'template' => 'imported',
             ]);
     }
 }

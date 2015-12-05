@@ -26,7 +26,19 @@
 
     <?= $this->section('content') ?>
 
+    <div class="container">
+        <div class="footer text-center text-muted">
+            <p>&copy; 2015 <a href="https://shadowhand.me/">shadowhand</a></p>
+            <p><small>
+                Not affiliated with <a href="http://rdio.com/">Rdio</a> or <a href="http://tidal.com/">Tidal</a> in any way.
+                Trademarks are owned by their respective parties.<br>
+                Not responsible for damages that may result from using this service.
+            </small></p>
+        </div>
+    </div>
+
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+    <script src="/js/layout.js"></script>
 </body>
 </html>
