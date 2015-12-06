@@ -29,6 +29,7 @@ use Spark\Configuration\PlatesResponderConfiguration;
 use Shadowhand\RadioTide\Configuration\MiddlewareConfiguration;
 use Shadowhand\RadioTide\Configuration\ResponderConfiguration;
 use Shadowhand\RadioTide\Configuration\RoutingConfiguration;
+use Shadowhand\RadioTide\Configuration\PlatesSessionConfiguration;
 use Shadowhand\RadioTide\Configuration\SessionConfiguration;
 
 // Load deployment configuration
@@ -59,9 +60,10 @@ $injector->define('Shadowhand\RadioTide\TidalClient', [
 // Apply additional configuration
 (new DefaultConfigurationSet([
     MiddlewareConfiguration::class,
-    PlatesResponderConfiguration::class,
     ResponderConfiguration::class,
     RoutingConfiguration::class,
+    PlatesResponderConfiguration::class,
+    PlatesSessionConfiguration::class,
     SessionConfiguration::class,
 ]))->apply($injector);
 

@@ -11,6 +11,7 @@ use Shadowhand\RadioTide\Domain\Import;
 use Shadowhand\RadioTide\Domain\Login;
 use Shadowhand\RadioTide\Domain\LoginRdio;
 use Shadowhand\RadioTide\Domain\LoginTidal;
+use Shadowhand\RadioTide\Domain\Logout;
 
 class RoutingConfiguration implements ConfigurationInterface
 {
@@ -23,6 +24,7 @@ class RoutingConfiguration implements ConfigurationInterface
             $router->get('/login/rdio', LoginRdio::class);
             $router->get('/login/tidal', LoginTidal::class);
             $router->post('/login/tidal', LoginTidal::class);
+            $router->get('/logout', Logout::class);
         });
     }
 }

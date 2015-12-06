@@ -5,4 +5,7 @@ jQuery(function ($) {
         $btn.text('Working...');
         return true;
     });
+    $('a#logout').on('click', function () {
+        return confirm('Are you sure you want to log out?');
+    });
 });

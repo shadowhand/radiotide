@@ -16,8 +16,12 @@
         <div class="header clearfix">
             <nav>
                 <ul class="nav nav-pills pull-right">
+                    <?php if ($this->is_logged_in()): ?>
                     <li role="presentation"><a href="/">Import</a></li>
+                    <li role="presentation"><a href="/logout" id="logout">Logout</a></li>
+                    <?php else: ?>
                     <li role="presentation"><a href="/login">Login</a></li>
+                    <?php endif ?>
                 </ul>
             </nav>
             <h3 class="text-muted">RadioTide</h3>
